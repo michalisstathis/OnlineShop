@@ -1,10 +1,10 @@
-﻿@model OnlineShop.Models.ProductTypes
+﻿@model OnlineShop.Models.TagNames
 @{
     ViewData["Title"] = "Details";
 }
 <br />
 
-<h2 class="text-info">Product Type Details</h2>
+<h2 class="text-info">Tag Name Details</h2>
 <form asp-action="Details" method="post">
     <div class="p-4 rounded border">
         <div asp-validation-summary="ModelOnly" class="text-danger">
@@ -12,12 +12,12 @@
         </div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="ProductType"></label>
+                <label asp-for="TagName"></label>
             </div>
             <div class="col-5">
-                <input asp-for="ProductType" readonly="readonly" class="form-control" />
+                <input asp-for="TagName" readonly="readonly" class="form-control" />
             </div>
-            <span asp-validation-for="ProductType" class="text-danger"></span>
+            <span asp-validation-for="TagName" class="text-danger"></span>
         </div>
         <div class="form-group">
 
@@ -26,7 +26,4 @@
         </div>
     </div>
 </form>
-
-
-
 
