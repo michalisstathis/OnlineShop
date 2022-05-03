@@ -83,6 +83,24 @@ namespace OnlineShop.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // Get remove action method
+        [ActionName("Remove")]
+        public IActionResult RemoveToCart(int? id)
+        {
+            List<Products> products = HttpContext.Session.Get<List<Products>>("products");
+            if (products != null)
+            {
+                var product = products.FirstOrDefault(c => c.Id == id);
+                if (product != null)
+                {
+                    products.Remove(product);
+                    HttpContext.Session.Set("products", products);
+                }
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
         public IActionResult Remove(int? id)
         {
             List<Products> products = HttpContext.Session.Get<List<Products>>("products");
@@ -96,6 +114,18 @@ namespace OnlineShop.Controllers
                 }
             }
             return RedirectToAction(nameof(Index));
+        }
+
+        // Get product Cart action method
+
+        public IActionResult Cart()
+        {
+            List<Products> products = HttpContext.Session.Get<List<Products>>("products");
+            if (products == null)
+            {
+                products = new List<Products>();
+            }
+            return View(products);
         }
 
 
